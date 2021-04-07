@@ -31,8 +31,23 @@ Sample Output
 1
 */
 
-function countingValleys(steps, path) {
-    // Write your code here
-
+const countingValleys = (steps, path) => {
+    let level = 0;
+    let inValley = false;
+    let valleys = 0;
+    for(let i = 0; i < path.length; i++) {
+        if(path[i] === 'U') {
+            level++;
+        } else {
+            level--;
+        }
+        if(level < 0 && inValley === false) {
+            inValley = true;
+            valleys++;
+        } else if(level >= 0 && inValley === true) {
+            inValley = false;
+        }
+    }
+    return valleys;
 }
 
